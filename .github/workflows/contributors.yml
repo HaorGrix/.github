@@ -1,0 +1,41 @@
+name: Update contributors
+
+# Keeps the README Contributors table (commit counts) current automatically.
+on:
+  push:
+    branches: [main]
+    paths-ignore: ["README.md"] # our own README commit must not retrigger this
+  schedule:
+    - cron: "0 3 * * 1" # weekly, Monday 03:00 UTC (also catches merges that skipped it)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: contributors-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  contributors:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # full history so git shortlog sees every commit
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Regenerate contributors table
+        run: node scripts/gen-contributors.mjs
+      - name: Commit if changed
+        run: |
+          if git diff --quiet -- README.md; then
+            echo "Contributors table unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git commit -m "docs(readme): auto-update contributor commit counts [skip ci]"
+          git push

@@ -1,0 +1,17 @@
+# Canonical contributor identities.
+# Collapses each person's multiple name/email variants into ONE identity so
+# `git shortlog -sne` and GitHub's Contributors graph show an accurate per-person
+# commit count. Non-destructive: does not rewrite history — git applies it at read time.
+#
+# Format:  Canonical Name <canonical@email>  Commit Name <commit@email>
+
+# MusfiqurTuhin (Sibir) — GitHub username MusfiqurTuhin; both prior identities are this person.
+MusfiqurTuhin <musfiqurrahmantuhin@gmail.com> <musfiqurrahmantuhin@gmail.com>
+MusfiqurTuhin <musfiqurrahmantuhin@gmail.com> Md. Musfiqur Rahman <70977299+MusfiqurTuhin@users.noreply.github.com>
+
+# Antardip Himel (Himu Pagla)
+Antardip Himel <himantar.cse@gmail.com> Antardip Himel <antardip.himel@rockets.utoledo.edu>
+Antardip Himel <himantar.cse@gmail.com> AntardipHimel <zennpsi@gmail.com>
+
+# Prithweeraj Acharjee (Porag / Bong Baba)
+Prithweeraj Acharjee <158000368+Prithweeraj-Acharjee@users.noreply.github.com> PRITHWEERAJ ACHARJEE PORAG <158000368+Prithweeraj-Acharjee@users.noreply.github.com>
