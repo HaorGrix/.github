@@ -12,6 +12,7 @@
 
 <!-- Social Badges -->
 <p>
+<a href="https://haorgrix.com"><img src="https://img.shields.io/badge/Website-haorgrix.com-A9E0F6?style=for-the-badge&logo=googlechrome&logoColor=white" /></a>
 <a href="mailto:haorgrix@gmail.com"><img src="https://img.shields.io/badge/Email-Contact-57819B?style=for-the-badge&logo=gmail&logoColor=white" /></a>
 <a href="https://github.com/HaorGrix"><img src="https://img.shields.io/badge/GitHub-Follow-3D5B6E?style=for-the-badge&logo=github&logoColor=white" /></a>
 <a href="https://www.linkedin.com/company/haorgrix"><img src="https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white" /></a>
@@ -20,6 +21,14 @@
 <img src="https://komarev.com/ghpvc/?username=HaorGrix&style=flat-square&color=57819B&label=PROFILE+VIEWS" alt="Profile Views" />
 
 </div>
+
+---
+
+## 🧰 Free Tools
+
+**[85+ free developer & business tools →](https://haorgrix.com/tools)** — JSON/SQL formatters, PDF merge / compress / watermark / OCR, invoice / receipt / payslip generators with 19 templates, image tools, timezone & health calculators. 100% client-side: no uploads, no account, works offline.
+
+Explore the full studio at **[haorgrix.com](https://haorgrix.com)**.
 
 ---
 
