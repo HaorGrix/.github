@@ -1,0 +1,42 @@
+name: Org contribution analytics
+
+# One weekly run covers EVERY org repo (instead of a workflow per repo):
+# builds the org dashboard on the profile README, and — when the
+# ORG_ANALYTICS_TOKEN secret (org PAT, repo scope) exists — also refreshes
+# the per-repo analytics section in each active repo's README via the API.
+on:
+  schedule:
+    - cron: "0 12 * * 4" # weekly, Thursday 12:00 UTC = 18:00 Bangladesh (UTC+6)
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: org-analytics
+  cancel-in-progress: true
+
+jobs:
+  analytics:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Generate analytics
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ORG_ANALYTICS_TOKEN: ${{ secrets.ORG_ANALYTICS_TOKEN }}
+        run: node scripts/org-analytics.mjs
+      - name: Commit dashboard if changed
+        run: |
+          if git diff --quiet -- profile/README.md; then
+            echo "Dashboard unchanged."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add profile/README.md
+          git commit -m "docs(profile): auto-update org contribution analytics [skip ci]"
+          git push
